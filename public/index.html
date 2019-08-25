@@ -77,7 +77,9 @@
           productdiv +=   "<div> Category: "+doc.data().category+"</div>";
 					productdiv += 	"<div> Price: "+ doc.data().price+" THB</div>";
 					productdiv += 	"<div> Shop: "+ doc.data().shop+"</div>";
-					productdiv += "</div>";
+          productdiv +=  "<button  onclick=\"editProduct()\">Edit</button>\t";
+          productdiv +=  "<button  onclick=\"delProduct()\">Delete</button>";
+          productdiv += "</div>";
 				});
 				
 				$("div#products").html(productdiv);
@@ -85,7 +87,7 @@
 			
 			
 		}
-		
+    
 		
 		function addProduct(){
 			if (typeof(db) === 'undefined') {
@@ -114,8 +116,6 @@
 				alert("Please input data");
 			}
 			
-			
-
 		}
 		
   </script>
