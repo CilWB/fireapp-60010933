@@ -128,10 +128,16 @@
       var shopP = prompt("Please enter a new product shop", arguments[5]);
       var imgP = prompt("Please enter a new product image", arguments[1]);
 
-
+      var con = confirm("edit to\n"
+      +"name: "+ nameP +"   "
+      +"category: "+ catP +"\n"
+      +"price:"+ priceP +"   "
+      +"shop:"+ shopP +"   "
+      +"img:"+ imgP 
+      );
      
         
-      // if(iddoc==true){
+      if(con==true){
           db.collection("products").doc(arguments[0]).update({
             name: (nameP),
             category: catP,
@@ -139,11 +145,8 @@
             image: imgP,
             shop: shopP
           });
-
-      // }
-
-
-      loadData();
+          loadData();
+      }
 
     }
 
