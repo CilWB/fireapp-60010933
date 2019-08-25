@@ -77,15 +77,76 @@
           productdiv +=   "<div> Category: "+doc.data().category+"</div>";
 					productdiv += 	"<div> Price: "+ doc.data().price+" THB</div>";
 					productdiv += 	"<div> Shop: "+ doc.data().shop+"</div>";
-          productdiv +=  "<button  onclick=\"editProduct()\">Edit</button>\t";
-          productdiv +=  "<button  onclick=\"delProduct('"+String(doc.id)+"')\">Delete</button>";
+          productdiv +=  "<button  onclick=\"editProduct('"+doc.id+
+          "','"+ doc.data().image+"','"+ doc.data().name+"','"
+          + doc.data().category+"','"+ doc.data().price+"','"
+          + doc.data().shop+"')\">Edit</button>\t";
+          productdiv +=  "<button  onclick=\"delProduct('"+doc.id+"')\">Delete</button>";
           productdiv += "</div>";
 				});
 				
 				$("div#products").html(productdiv);
 			});
 				
-		}
+    }
+  
+
+    function editProduct(){
+      // var iddoc = confirm((arguments[0]));
+      // var iddoc = confirm((arguments[1]));
+      // var iddoc = confirm((arguments[2]));
+      // var iddoc = confirm((arguments[3]));
+      // var iddoc = confirm((arguments[4]));
+      // var iddoc = confirm((arguments[5]));
+
+      // if (typeof(db) === 'undefined') {
+			// 	db = firebase.firestore();
+			// }
+			
+
+			
+				// db.collection("products").doc(arguments[0]).update({ 
+				// 	name: $("input#txtPname").val(),
+        //   category: $("input#txtCategory").val(),
+				// 	image: $("input#txtImage").val(),
+				// 	price: $("input#txtPrice").val(),
+				// 	shop: $("input#txtShop").val(),
+				// });
+				
+				
+				// $("input#txtPname").val("");
+				// $("input#txtImage").val("");
+				// $("input#txtPrice").val("");
+				// $("input#txtShop").val("");	
+				// $("input#txtCategory").val("");
+
+			
+
+      var nameP = prompt("Please enter a new product name", arguments[2]);
+      var catP = prompt("Please enter a new product category", arguments[3]);
+      var priceP = prompt("Please enter a new product price", arguments[4]);
+      var shopP = prompt("Please enter a new product shop", arguments[5]);
+      var imgP = prompt("Please enter a new product image", arguments[1]);
+
+
+     
+        
+      // if(iddoc==true){
+          db.collection("products").doc(arguments[0]).update({
+            name: (nameP),
+            category: catP,
+            price: priceP,
+            image: imgP,
+            shop: shopP
+          });
+
+      // }
+
+
+      loadData();
+
+    }
+
     function delProduct(){
       // var iddoc = confirm(String(arguments[0]));
       var check = confirm("Click OK to delete a chosen product! ");
@@ -157,7 +218,7 @@
 		Price: <input type="text" id="txtPrice"><br/>
 		Shop: <input type="text" id="txtShop"><br/><br/>
 		<button  onclick="addProduct()">Add a Product</button>
-	</div>
+  </div>
 
 	<script>
 		//Waiting for firebase object
