@@ -76,7 +76,7 @@
 					productdiv += 	"<h3>"+ doc.data().name+"</h3>";
           productdiv +=   "<div> Category: "+doc.data().category+"</div>";
 					productdiv += 	"<div> Price: "+ doc.data().price+" THB</div>";
-					productdiv += 	"<div> Shopppppp: "+ doc.data().shop+"</div>";
+					productdiv += 	"<div> Shop: "+ doc.data().shop+"</div>";
 					productdiv += "</div>";
 				});
 				
@@ -96,6 +96,7 @@
 			
 				db.collection("products").add({ 
 					name: $("input#txtPname").val(),
+          category: $("input#txtCategory").val(),
 					image: $("input#txtImage").val(),
 					price: $("input#txtPrice").val(),
 					shop: $("input#txtShop").val(),
@@ -107,7 +108,8 @@
 				$("input#txtImage").val("");
 				$("input#txtPrice").val("");
 				$("input#txtShop").val("");	
-				
+				$("input#txtCategory").val("");
+
 			}else{
 				alert("Please input data");
 			}
@@ -136,7 +138,8 @@
 	<h2>New Product</h2>
 	
 	<div class="product-list">
-		Name: <input type="text" id="txtPname"><br/>
+    Name: <input type="text" id="txtPname"><br/>
+    Category: <input type="text" id="txtCategory"><br/>
 		Image: <input type="text" id="txtImage"><br/>
 		Price: <input type="text" id="txtPrice"><br/>
 		Shop: <input type="text" id="txtShop"><br/><br/>
