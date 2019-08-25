@@ -92,6 +92,7 @@
   
 
     function editProduct(){
+      ////debug argement zone
       // var iddoc = confirm((arguments[0]));
       // var iddoc = confirm((arguments[1]));
       // var iddoc = confirm((arguments[2]));
@@ -99,12 +100,14 @@
       // var iddoc = confirm((arguments[4]));
       // var iddoc = confirm((arguments[5]));
 
+      //// reconnect db
       // if (typeof(db) === 'undefined') {
 			// 	db = firebase.firestore();
 			// }
 			
 
-			
+      ////style2 using input textbox below to input new data
+      ////not done yet
 				// db.collection("products").doc(arguments[0]).update({ 
 				// 	name: $("input#txtPname").val(),
         //   category: $("input#txtCategory").val(),
@@ -121,7 +124,7 @@
 				// $("input#txtCategory").val("");
 
 			
-
+      // style 1 use prompt to input new data
       var nameP = prompt("Please enter a new product name", arguments[2]);
       var catP = prompt("Please enter a new product category", arguments[3]);
       var priceP = prompt("Please enter a new product price", arguments[4]);
