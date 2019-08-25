@@ -66,7 +66,7 @@
 			}
 			
 			var productdiv = "";
-			
+			var idDoc = "";
 			db.collection("products").get().then(function(querySnapshot) {
 				querySnapshot.forEach(function(doc) {
 					console.log(doc.id, " => ", doc.data());
@@ -78,16 +78,29 @@
 					productdiv += 	"<div> Price: "+ doc.data().price+" THB</div>";
 					productdiv += 	"<div> Shop: "+ doc.data().shop+"</div>";
           productdiv +=  "<button  onclick=\"editProduct()\">Edit</button>\t";
-          productdiv +=  "<button  onclick=\"delProduct()\">Delete</button>";
+          productdiv +=  "<button  onclick=\"delProduct('"+String(doc.id)+"')\">Delete</button>";
           productdiv += "</div>";
 				});
 				
 				$("div#products").html(productdiv);
 			});
-			
-			
+				
 		}
-    
+    function delProduct(){
+      // var iddoc = confirm(String(arguments[0]));
+      var check = confirm("Click OK to delete a chosen product! ");
+      if(check == true){
+          // var hi1 = confirm("hi1");
+        db.collection("products").doc(arguments[0]).delete().then(function() {
+        console.log("Document successfully deleted!");
+        }).catch(function(error){ 
+          console.error("Error removing document: ", error);});
+          // var hi2 = confirm("hi2");
+				loadData();
+      }
+          // var hi3 = confirm("hi3");
+      
+    }
 		
 		function addProduct(){
 			if (typeof(db) === 'undefined') {
